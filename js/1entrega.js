@@ -69,3 +69,4 @@ TM.agregarUsuario(1, 2);
 TM.agregarUsuario(1, 1); 
 TM.ponerEventoEnGira(1, "Otro Estadio", new Date(2024, 2, 29));
 TM.getEventos();
+

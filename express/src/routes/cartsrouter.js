@@ -1,6 +1,6 @@
 import {Router} from "express";
 import CartManager from '../services/cartManager.js'
-import ProductManager from '../services/productManager.js'
+import { ProductManager } from '../services/productManager.js';
 
 const cartsRouter = Router ();
 const carts = new CartManager ('src/data/cart.json')
@@ -22,7 +22,7 @@ cartsRouter.get(`/:cid`, async (req, res) => {
 //Para agregar un carrito
 cartsRouter.post(`/`, async (req, res) => {
   try {
-// Para agregar un nuevo carrito
+    await carts.addCart();
   } catch (error) {
     res.status(500).send({ error: error.message });
   }

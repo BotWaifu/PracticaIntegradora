@@ -4,7 +4,7 @@
     "title": "Peluche Anime",
     "description": "Peluche de Iguro - Kimetsu no yaiba",
     "price": 15,
-    "thumbnail": "pelucheiguro.jpg",
+    "thumbnail": "../public/img/pelucheiguro.jpg",
     "code": "C001",
     "stock": 10
   },
@@ -13,7 +13,7 @@
     "title": "Figura Anime",
     "description": "Figura Denji SEGA - Chainsaw Man",
     "price": 70,
-    "thumbnail": "figuradenji.jpg",
+    "thumbnail": "../public/img/figuradenji.jpg",
     "code": "C002",
     "stock": 5
   },
@@ -22,7 +22,7 @@
     "title": "Toalla Anime",
     "description": "Toalla Anime - Nico Robin One Piece",
     "price": 10,
-    "thumbnail": "toalla-nicorobin.jpg",
+    "thumbnail": "../public/img/toalla-nicorobin.jpg",
     "code": "T003",
     "stock": 1
   },
@@ -31,7 +31,7 @@
     "title": "Frazada Anime",
     "description": "Frazada Anime - Eve",
     "price": 30,
-    "thumbnail": "frazada-eve.jpg",
+    "thumbnail": "../public/img/frazada-eve.jpg",
     "code": "C001",
     "stock": 15
   },
@@ -40,7 +40,7 @@
     "title": "Cuadro Ilustracion Metalica",
     "description": "Cuadro Ilustracion Metalica - One Piece",
     "price": 15,
-    "thumbnail": "cuadrometalico-onepiece.jpg",
+    "thumbnail": "../public/img/cuadrometalico-onepiece.jpg",
     "code": "C005",
     "stock": 6
   },
@@ -49,7 +49,7 @@
     "title": "Mouse Pad Anime",
     "description": "Mouse Pad Anime - Sakura Taisen",
     "price": 30,
-    "thumbnail": "mousepad-sakurataisen.jpg",
+    "thumbnail": "../public/img/mousepad-sakurataisen.jpg",
     "code": "C001",
     "stock": 15
   },
@@ -58,7 +58,7 @@
     "title": "Folder Animes Variados",
     "description": "Folder Animes Variados",
     "price": 20,
-    "thumbnail": "folderanimesvariados.jpg",
+    "thumbnail": "../public/img/folderanimesvariados.jpg",
     "code": "F007",
     "stock": 12
   },
@@ -67,7 +67,7 @@
     "title": "Shikishi Cuadro",
     "description": "Shikishi Cuadro - One Piece",
     "price": 15,
-    "thumbnail": "shikishicuadro-onepiece.jpg",
+    "thumbnail": "../public/img/shikishicuadro-onepiece.jpg",
     "code": "S008",
     "stock": 15
   },
@@ -76,7 +76,7 @@
     "title": "Photo Card",
     "description": "Photo Card- Tori Himemiya Ensemble Stars",
     "price": 5,
-    "thumbnail": "photocard-tori.jpg",
+    "thumbnail": "../public/img/photocard-tori.jpg",
     "code": "P009",
     "stock": 15
   },
@@ -85,7 +85,7 @@
     "title": "Folder Anime",
     "description": "Folder Anime - One Piece",
     "price": 10,
-    "thumbnail": "folder-onepiece.jpg",
+    "thumbnail": "../public/img/folder-onepiece.jpg",
     "code": "F010",
     "stock": 10
   },
@@ -94,7 +94,7 @@
     "title": "Vaso Anime",
     "description": "Vaso Anime - Dragon Ball Z",
     "price": 15,
-    "thumbnail": "vaso-dbz.jpg",
+    "thumbnail": "../public/img/vaso-dbz.jpg",
     "code": "V011",
     "stock": 2
   },
@@ -103,7 +103,7 @@
     "title": "Almohada Anime",
     "description": "Almohada Anime - Kakkou no linazuke",
     "price": 30,
-    "thumbnail": "almohada-kakkou.jpg",
+    "thumbnail": "../public/img/almohada-kakkou.jpg",
     "code": "A012",
     "stock": 2
   },
@@ -112,7 +112,7 @@
     "title": "Figura Anime",
     "description": "Figura Anime - Vegeta DBZ",
     "price": 50,
-    "thumbnail": "figura-vegeta.jpg",
+    "thumbnail": "../public/img/figura-vegeta.jpg",
     "code": "F013",
     "stock": 1
   },
@@ -121,7 +121,7 @@
     "title": "Figura Anime",
     "description": " Figura Anime - Midoriya Boku no Hero Academia ",
     "price": 50,
-    "thumbnail": "figura-midoriya.jpg",
+    "thumbnail": "../public/img/figura-midoriya.jpg",
     "code": "F014",
     "stock": 1
   },
@@ -130,7 +130,7 @@
     "title": "Figura Anime",
     "description": " Figura Anime - Devil Homura Madogatari",
     "price": 50,
-    "thumbnail": "figura-devil-homura.jpg",
+    "thumbnail": "../public/img/figura-devil-homura.jpg",
     "code": "F015",
     "stock": 1
   }

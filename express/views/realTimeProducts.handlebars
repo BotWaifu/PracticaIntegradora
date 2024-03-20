@@ -1,0 +1,14 @@
+<h1>Productos en Tiempo Real</h1>
+<ul id="product-list">
+</ul>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    const socket = io();
+    socket.on('productList', products => {
+    const productListElement = document.getElementById('product-list');
+    productListElement.innerHTML = products.map(product =>
+      `<li>${product.title}</li>`
+    ).join('');
+});
+</script>

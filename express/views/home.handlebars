@@ -1,0 +1,29 @@
+<body>
+  <h1>Listado de Productos</h1>
+  <div class="product-grid">
+    {{#each productList}}
+      <div class="product-card">
+        <div class="product-image">
+          {{#if this.thumbnails.length}}
+            <img src="{{this.thumbnails.[0]}}" alt="Imagen del producto">
+          {{else}}
+            Sin imagen
+          {{/if}}
+        </div>
+        <div class="product-details">
+          <p>ID: {{this.id}}</p>
+          <p>Nombre: {{this.title}}</p>
+          <p>Estado: {{#if status}} Activo {{else}} Inactivo {{/if}}</p>
+          <p>Descripción: {{this.description}}</p>
+          <p>Precio: {{this.price}}</p>
+          <p>Código: {{this.code}}</p>
+          <p>Cantidad: {{this.stock}}</p>
+          <p>Categoría: {{this.category}}</p>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</body>
+
+<script src="/express/socket.js"></script>
+<script src="/js/index.js"></script>

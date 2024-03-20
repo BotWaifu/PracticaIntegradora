@@ -1,0 +1,55 @@
+
+body {
+    background-color: #000000; /* Cambiar el color de fondo */
+    color: #ffffff; /* Cambiar el color del texto */
+    font-family: Arial, sans-serif; /* Utilizar una fuente de texto adecuada */
+}
+
+/* Estilos del formulario */
+form {
+    width: 50%;
+    margin: 0 auto;
+    background-color: #fff; /* Agregar un fondo blanco al formulario */
+    padding: 20px;
+    border-radius: 5px; /* Agregar bordes redondeados */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Agregar una sombra suave */
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+label {
+    margin-bottom: 5px;
+    font-weight: bold; /* Hacer el texto de las etiquetas más audaz */
+}
+
+input, button {
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc; /* Agregar un borde al input y al botón */
+    border-radius: 3px; /* Agregar bordes redondeados */
+}
+
+button {
+    background-color: #007bff; /* Cambiar el color de fondo del botón */
+    color: #fff; /* Cambiar el color del texto del botón */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Agregar una transición suave */
+}
+
+button:hover {
+    background-color: #0056b3; /* Cambiar el color de fondo del botón al pasar el ratón */
+}
+
+@media (max-width: 768px) {
+    form {
+        width: 90%;
+    }
+}

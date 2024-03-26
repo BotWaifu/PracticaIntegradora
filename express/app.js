@@ -3,52 +3,36 @@ import cartsRouter from './src/routes/cartsrouter.js';
 import productsRouter from './src/routes/productsrouter.js';
 import viewsRouter from './src/routes/viewrouter.js';
 import handlebars from 'express-handlebars';
-import { __dirname } from './util.js';
-import http from 'http'; // Importa el módulo http
+import  __dirname  from './util.js';
 import { Server } from 'socket.io';
+import Sockets from "./sockets.js";
+import path from 'path';
 
-const port = 8080;
 const app = express();
+const port = 8080;
 
-app.use(express.json());
+// Middleware
 app.use(express.urlencoded({ extended: true }));
-app.use('/', viewsRouter);
+app.use(express.json());
+app.use(express.static("public"));
+//pequeño mod para que me lea las imagenes de public, despues ver si se puede mejorar
+app.use("/public", express.static("public"));
 
-app.engine('handlebars', handlebars.engine());
-app.set("views", `${__dirname}/views`);
-app.set('view engine', 'handlebars');
+// Routes
+app.use("/api/products", productsRouter);
+app.use("/api/carts", cartsRouter);
+app.use("/", viewsRouter);
 
-// Test de ingreso
-app.get('/api', (req, res) => {
-    res.send('Bienvenida');
-});
+// Set up Handlebars
+app.engine("handlebars", handlebars.engine());
+app.set("view engine", "handlebars");
+app.set('views', path.join(__dirname, 'views'));
 
-// Use routers
-app.use('/api/products', productsRouter);
-app.use('/api/carts', cartsRouter);
-app.use(express.static('public'));
+// Start server
+const server = app.listen(port, () =>
+  console.log(`Servidor corriendo en http://localhost:${port}`)
+);
 
-// Crear servidor HTTP
-const httpServer = http.createServer(app);
-
-// Inicializar el servidor HTTP
-httpServer.listen(port, () => {
-    console.log(`Servidor corriendo en http://localhost:${port}`);
-});
-
-// Crear servidor de sockets
-const socketServer = new Server(httpServer);
-
-// Manejar conexiones de sockets
-socketServer.on('connection', (socket) => {
-    console.log('Nuevo cliente conectado -----> ', socket.id);
-
-    // Emitir eventos para agregar y eliminar productos
-    socket.on('newProduct', (product) => {
-        socketServer.emit('productList', product);
-    });
-
-    socket.on('deleteProduct', (productId) => {
-        socketServer.emit('productList', productId);
-    });
-});
+// Set up WebSocket server
+const io = new Server(server);
+Sockets(io);

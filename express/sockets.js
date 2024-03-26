@@ -1,4 +1,4 @@
-import ProductManager from "./services/ProductManager.js";
+import ProductManager from "./src/services/ProductManager.js";
 
 export default (io) => {
   const productManager = new ProductManager("./data/products.json");

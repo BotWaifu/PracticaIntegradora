@@ -1,29 +1,34 @@
-<body>
-  <h1>Listado de Productos</h1>
-  <div class="product-grid">
-    {{#each productList}}
-      <div class="product-card">
-        <div class="product-image">
-          {{#if this.thumbnails.length}}
-            <img src="{{this.thumbnails.[0]}}" alt="Imagen del producto">
-          {{else}}
-            Sin imagen
-          {{/if}}
-        </div>
-        <div class="product-details">
-          <p>ID: {{this.id}}</p>
-          <p>Nombre: {{this.title}}</p>
-          <p>Estado: {{#if status}} Activo {{else}} Inactivo {{/if}}</p>
-          <p>Descripción: {{this.description}}</p>
-          <p>Precio: {{this.price}}</p>
-          <p>Código: {{this.code}}</p>
-          <p>Cantidad: {{this.stock}}</p>
-          <p>Categoría: {{this.category}}</p>
-        </div>
-      </div>
-    {{/each}}
+<div class="mx-auto px-4">
+  <div class="mx-auto my-2 text-center border-2 text-uppercase">
+    <h1>Bienvenido</h1>
   </div>
-</body>
 
-<script src="/express/socket.js"></script>
-<script src="/js/index.js"></script>
+  <section class="hero">
+    <div style="padding: 50px 0;">
+      <h2 style="font-size:4rem">Nos especializamos en figuras de colección de tus animes favoritos</h2>
+      <p style="margin: 0 0 4rem 0 !important;">Explora nuestra colección y
+        encuentra lo último del mundo anime.</p>
+      <a
+        href="/products"
+        style="background-color: #fff; color: #333; padding: 10px 30px; border-radius: 5px; text-decoration: none;"
+      >Ver colección</a>
+    </div>
+  </section>
+
+  <section class="featured-products">
+    <h2>Productos Destacados</h2>
+    {{#if products}}
+      {{#each products}}
+        <div class="product">
+          <img src="{{this.thumbnail}}" alt="{{this.title}}" />
+          <h3>{{this.title}}</h3>
+          <p>${{this.price}}</p>
+          <a href="/products">Comprar</a>
+        </div>
+      {{/each}}
+    {{else}}
+      <h1 class="text-center md:mt-12 text-lg">No hay productos agregados por el
+        momento...</h1>
+    {{/if}}
+  </section>
+</div>

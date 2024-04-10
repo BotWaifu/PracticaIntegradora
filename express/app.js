@@ -1,38 +1,83 @@
 import express from 'express';
-import cartsRouter from './src/routes/cartsrouter.js';
-import productsRouter from './src/routes/productsrouter.js';
-import viewsRouter from './src/routes/viewrouter.js';
-import handlebars from 'express-handlebars';
-import  __dirname  from './util.js';
-import { Server } from 'socket.io';
-import Sockets from "./sockets.js";
-import path from 'path';
+import handlebars from "express-handlebars";
+import productRouter from "./routes/productRouter.js";
+import cartRouter from "./routes/cartRouter.js";
+import viewsRouter from "./routes/viewsRouter.js";
+import { Server } from "socket.io";
+import __dirname from "./utils/constantsUtil.js";
+import websocket from "./websocket.js"; 
+import mongoose from "mongoose";
+import messagesManagerDB from "./dao/messageManagerDB.js";
 
 const app = express();
+
+const mongoose = require('mongoose');
+
+// URI de conexión a MongoDB
+const uri = "mongodb+srv://<usuario>:<contraseña>@<cluster>.mongodb.net/<basededatos>?retryWrites=true&w=majority";
+
+// Conexión a MongoDB
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
+    console.log("Conexión exitosa a MongoDB");
+    // Aquí puedes iniciar tu aplicación Express
+  })
+  .catch((error) => {
+    console.error("Error al conectar a MongoDB:", error);
+  });
+
+
+app.use(express.urlencoded({extended: true}))
+app.use(express.json());
+app.use(express.static(`${__dirname}/../public`));
+
+app.engine("handlebars", handlebars.engine());
+app.set("views",`${__dirname}/views`);
+app.set("view engine", "handlebars");
+
+//BIENVENIDA
+app.get('/', (req, res) => {
+  res.send("Bievenido")
+})
+
+//ROUTES
+app.use("/api/products", productRouter)
+app.use("/api/carts", cartRouter)
+app.use("/products", viewsRouter);
+
+
 const port = 8080;
 
-// Middleware
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-app.use(express.static("public"));
-//pequeño mod para que me lea las imagenes de public, despues ver si se puede mejorar
-app.use("/public", express.static("public"));
 
-// Routes
-app.use("/api/products", productsRouter);
-app.use("/api/carts", cartsRouter);
-app.use("/", viewsRouter);
 
-// Set up Handlebars
-app.engine("handlebars", handlebars.engine());
-app.set("view engine", "handlebars");
-app.set('views', path.join(__dirname, 'views'));
+const httpServer = app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
 
-// Start server
-const server = app.listen(port, () =>
-  console.log(`Servidor corriendo en http://localhost:${port}`)
-);
+// SOCKET SERVER CHAT
+const socketServer = new Server(httpServer);
+const messagesManagerService = new messagesManagerDB()
 
-// Set up WebSocket server
-const io = new Server(server);
-Sockets(io);
+app.get('/chat', async (req, res) => {
+  const chat = await messagesManagerService.getMessages({})
+  res.render(
+    "chat",
+    {
+      style: 'index.css',
+      layout: 'main',
+      chat: chat
+    }
+  )
+})
+
+socketServer.on("connection", socket => {
+  socket.on("addMessage", async messageData => {
+    await messagesManagerService.addMessage(messageData.user, messageData.message)
+  })
+
+  socket.on("getMessages", async () => {
+    const message = await messagesManagerService.getMessages()
+    socket.emit("receiveMessages", message)
+  })
+})
+websocket(io);

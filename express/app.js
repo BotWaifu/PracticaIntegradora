@@ -12,7 +12,7 @@ import websocket from "./websocket.js"; // Asumiendo que esta función es válid
 const app = express();
 
 // URI de conexión a MongoDB
-const uri = "mongodb+srv://maria16leon17:<aries0404>@cluster0.klbhxor.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const uri = "mongodb+srv://maria16leon17:aries0404@cluster0.klbhxor.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
 // Conexión a MongoDB
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
